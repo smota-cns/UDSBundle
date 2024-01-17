@@ -7,16 +7,17 @@ metadata:
   # x-release-please-start-version
   version: "0.0.1"
   # x-release-please-end
+  architecture: amd64
 
 packages:
   # Zarf init package
   - name: init
     repository: ghcr.io/defenseunicorns/packages/init
-    ref: v0.31.4
+    ref: v0.31.4-amd64
     optional-components:
       - k3s
       - git-server
   # Big Bang - Configured by Defense Unicorns
   - name: dubbd
     repository: ghcr.io/defenseunicorns/packages/dubbd-k3d
-    ref: 0.16.0
+    ref: 0.16.0-amd64
