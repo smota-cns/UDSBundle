@@ -11,13 +11,13 @@ A starter UDS Bundle that includes the air gap deployment of [K3s](https://k3s.i
 
    ```
    **RUN AS ROOT**
-   uds deploy oci://,,,
+   uds deploy oci://ghcr.io/smota-cns/packages/atoms:0.0.1-amd64
    ```
 
    Option 2 (partial internet connection)
 
    ```
-   uds pull oci://... # Requires internet connection
+   uds pull oci://ghcr.io/smota-cns/packages/atoms:0.0.1-amd64 # Requires internet connection
    **RUN AS ROOT**
-   uds deploy ...tar.gz # No internet connection required
+   uds deploy uds-bundle-atoms-amd64-0.0.1.tar.zst # No internet connection required
    ```

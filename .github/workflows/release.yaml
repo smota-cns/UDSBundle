@@ -27,15 +27,14 @@ jobs:
           run: uds create --confirm
 
         - name: Publish Bundle
-          run: uds publish uds-bundle-atoms-amd64-*.tar.gz oci://ghcr.io/smota-cns/packages
+          run: uds publish uds-bundle-atoms-amd64-*.tar.zst oci://ghcr.io/smota-cns/packages
 
         - name: Create Release
           id: create_release
           uses: softprops/action-gh-release@v1
           with:
             files: |
-              build/zarf
-              build/zarf-init-amd64-*.tar.zst
+              uds-bundle-atoms-amd64-*.tar.zst
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
