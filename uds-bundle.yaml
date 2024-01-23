@@ -2,7 +2,7 @@
 
 kind: UDSBundle
 metadata:
-  name: uds-atom-bundle
+  name: atoms
   description: "Atom UDS Bundle for secure runtime on-prem."
   # x-release-please-start-version
   version: "0.0.1"

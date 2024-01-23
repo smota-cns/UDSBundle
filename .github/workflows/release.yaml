@@ -1,0 +1,42 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+        - name: Environment setup
+          uses: ./.github/actions/setup
+          with:
+            gh_token: ${{ secrets.GITHUB_TOKEN }}
+            ib_user: ${{ secrets.IRON_BANK_ROBOT_USERNAME }}
+            ib_password: ${{ secrets.IRON_BANK_ROBOT_PASSWORD }}
+
+        - name: Create Bundle
+          run: uds create --confirm
+
+        - name: Publish Bundle
+          run: uds publish uds-bundle-atoms-amd64-*.tar.gz oci://ghcr.io/smota-cns/packages
+
+        - name: Create Release
+          id: create_release
+          uses: softprops/action-gh-release@v1
+          with:
+            files: |
+              build/zarf
+              build/zarf-init-amd64-*.tar.zst
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+

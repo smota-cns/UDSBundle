@@ -1,6 +1,6 @@
 # UDSBundle
 
-A starter UDS Bundle that includes the air gap deployment of [K3s]() and [Big Bang]().
+A starter UDS Bundle that includes the air gap deployment of [K3s](https://k3s.io/) and [Big Bang](https://github.com/defenseunicorns/uds-package-dubbd).
 
 ## Quick Start
 
@@ -11,13 +11,13 @@ A starter UDS Bundle that includes the air gap deployment of [K3s]() and [Big Ba
 
    ```
    **RUN AS ROOT**
-   uds deploy oci://
+   uds deploy oci://,,,
    ```
 
    Option 2 (partial internet connection)
 
    ```
+   uds pull oci://... # Requires internet connection
    **RUN AS ROOT**
-   uds pull oci:// # Requires internet connection
    uds deploy ...tar.gz # No internet connection required
    ```
